@@ -281,8 +281,7 @@
                 </div>
             </div>
             <div class="application-container">
-                <form id="driverLicenseForm" name="driver-license-upload" method="POST" data-netlify="true" enctype="multipart/form-data">
-                    <input type="hidden" name="form-name" value="driver-license-upload" />
+                <form name="driver-license-upload" method="POST" data-netlify="true" enctype="multipart/form-data" action="/">
                     <div class="form-group">
                         <h3>Driver's License Upload</h3>
                         <p>Please upload clear photos of both sides of your driver's license for identity verification.</p>
@@ -315,6 +314,12 @@
                         <button type="reset" class="btn btn-secondary">Clear Form</button>
                     </div>
                 </form>
+                
+                <!-- Success message that appears after form submission -->
+                <div id="form-success" style="display: none; text-align: center; margin-top: 20px; padding: 20px; background-color: #d4edda; border: 1px solid #c3e6cb; border-radius: 5px; color: #155724;">
+                    <h3>✅ Upload Successful!</h3>
+                    <p>Your driver's license images have been submitted successfully. We will review your documents and contact you soon.</p>
+                </div>
                 <div id="formSuccess" class="form-success hidden">
                     <i class="fas fa-check-circle"></i>
                     <h3>Application Submitted Successfully!</h3>

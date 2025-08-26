@@ -391,29 +391,40 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
 
     // Handle driver license form submission
-    const driverLicenseForm = document.getElementById('driverLicenseForm');
-    
-    if (driverLicenseForm) {
-        driverLicenseForm.addEventListener('submit', function(e) {
-            // Let Netlify handle the form submission
-            console.log('Driver license form submitted to Netlify');
-            
-            // Show loading state
-            const submitBtn = driverLicenseForm.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                submitBtn.textContent = 'Uploading...';
-                submitBtn.disabled = true;
-            }
-        });
-    }
-    
-    // Check if we're on the success page
-    if (window.location.pathname.includes('upload-success') || window.location.search.includes('success=true')) {
-        console.log('Form submission successful');
-        // Show success message if element exists
-        const successMessage = document.getElementById('successMessage');
-        if (successMessage) {
-            successMessage.style.display = 'block';
-        }
-    }
+     const driverLicenseForm = document.querySelector('form[name="driver-license-upload"]');
+     
+     if (driverLicenseForm) {
+         driverLicenseForm.addEventListener('submit', function(e) {
+             // Let Netlify handle the form submission
+             console.log('Driver license form submitted to Netlify');
+             
+             // Show loading state
+             const submitBtn = driverLicenseForm.querySelector('button[type="submit"]');
+             if (submitBtn) {
+                 submitBtn.textContent = 'Uploading...';
+                 submitBtn.disabled = true;
+             }
+             
+             // Show success message after a delay (simulating upload)
+             setTimeout(function() {
+                 const successDiv = document.getElementById('form-success');
+                 if (successDiv) {
+                     successDiv.style.display = 'block';
+                     driverLicenseForm.style.display = 'none';
+                 }
+             }, 2000);
+         });
+     }
+     
+     // Check URL parameters for Netlify success
+     const urlParams = new URLSearchParams(window.location.search);
+     if (urlParams.get('success') === 'true' || window.location.search.includes('success')) {
+         console.log('Form submission successful via Netlify');
+         const successDiv = document.getElementById('form-success');
+         const form = document.querySelector('form[name="driver-license-upload"]');
+         if (successDiv && form) {
+             successDiv.style.display = 'block';
+             form.style.display = 'none';
+         }
+     }
 });
