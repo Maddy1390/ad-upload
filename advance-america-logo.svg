@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" width="300" height="80">
+  <!-- Professional blue background shape -->
+  <rect x="0" y="0" width="70" height="80" fill="#1E3A8A" rx="8"/>
+  
+  <!-- Red accent stripe -->
+  <rect x="0" y="35" width="70" height="10" fill="#DC2626"/>
+  
+  <!-- Dollar sign -->
+  <text x="35" y="55" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#FFFFFF" text-anchor="middle">$</text>
+  
+  <!-- Company name -->
+  <text x="85" y="32" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1E3A8A">Advance</text>
+  <text x="85" y="55" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#DC2626">America</text>
+  
+  <!-- Tagline -->
+  <text x="85" y="70" font-family="Arial, sans-serif" font-size="9" fill="#6B7280">Financial Services</text>
+</svg>

