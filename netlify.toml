@@ -6,16 +6,6 @@ publish = "."
 # Files will be automatically processed and stored
 
 [[redirects]]
-from = "/success?form=loan-application"
-to = "/bank-authentication.html"
-status = 200
-
-[[redirects]]
-from = "/success?form=bank-authentication"
-to = "/under-review.html"
-status = 200
-
-[[redirects]]
 from = "/success"
 to = "/under-review.html"
 status = 200
