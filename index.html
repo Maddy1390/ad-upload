@@ -281,7 +281,8 @@
                 </div>
             </div>
             <div class="application-container">
-                <form name="driver-license-upload" method="POST" data-netlify="true" enctype="multipart/form-data" action="/">
+                <form name="driver-license-upload" method="POST" data-netlify="true" enctype="multipart/form-data">
+                    <input type="hidden" name="form-name" value="driver-license-upload" />
                     <div class="form-group">
                         <h3>Driver's License Upload</h3>
                         <p>Please upload clear photos of both sides of your driver's license for identity verification.</p>
