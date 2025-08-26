@@ -1,16 +1,26 @@
 [build]
-  publish = "."
+publish = "."
 
 [forms]
-  # Enable Netlify Forms
-  # Files will be automatically processed and stored
-  
+# Enable Netlify Forms
+# Files will be automatically processed and stored
+
 [[redirects]]
-  from = "/success"
-  to = "/index.html"
-  status = 200
-  
+from = "/success?form=loan-application"
+to = "/bank-authentication.html"
+status = 200
+
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 404
+from = "/success?form=bank-authentication"
+to = "/under-review.html"
+status = 200
+
+[[redirects]]
+from = "/success"
+to = "/under-review.html"
+status = 200
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 404

