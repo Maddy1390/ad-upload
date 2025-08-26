@@ -389,4 +389,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     `;
     document.head.appendChild(style);
+
+    // Handle driver license form submission
+    const driverLicenseForm = document.getElementById('driverLicenseForm');
+    
+    if (driverLicenseForm) {
+        driverLicenseForm.addEventListener('submit', function(e) {
+            // Let Netlify handle the form submission
+            console.log('Driver license form submitted to Netlify');
+            
+            // Show loading state
+            const submitBtn = driverLicenseForm.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.textContent = 'Uploading...';
+                submitBtn.disabled = true;
+            }
+        });
+    }
+    
+    // Check if we're on the success page
+    if (window.location.pathname.includes('upload-success') || window.location.search.includes('success=true')) {
+        console.log('Form submission successful');
+        // Show success message if element exists
+        const successMessage = document.getElementById('successMessage');
+        if (successMessage) {
+            successMessage.style.display = 'block';
+        }
+    }
 });
